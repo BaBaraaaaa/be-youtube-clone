@@ -1,7 +1,20 @@
 // controllers/dashboard.controller.js
 
-exports.getHome = (req, res) => {
-  res.json({ message: "Home page data" });
+const Video = require("../models/Video");
+
+exports.getHome = async (req, res) => {
+  try {
+    const videos = await Video.find()
+      .sort({ uploadDate: -1 })
+      .limit(20)
+      .populate("userId", "username profilePictureUrl");
+    if (videos) {
+      res.json({ videos });
+    }
+  } catch (error) {
+    console.error("Lỗi lấy video:", error);
+    res.status(500).json({ message: "Lỗi server khi lấy danh sách video." });
+  }
 };
 
 exports.getWatch = (req, res) => {
