@@ -1,19 +1,14 @@
+// routes/videoRouter.js
+
 const express = require("express");
 const router = express.Router();
 
-// GET /video/watch/:videoId
-router.get("/watch/:videoId", (req, res) => {
-  res.json({ message: `Watch video ${req.params.videoId}` });
-});
+const videoController = require("../controllers/videoController");
 
-// PUT /video/edit/:videoId
-router.put("/edit/:videoId", (req, res) => {
-  res.json({ message: `Edit video ${req.params.videoId}` });
-});
+router.get("/watch/:videoId", videoController.watchVideo);
 
-// POST /video/upload
-router.post("/upload", (req, res) => {
-  res.json({ message: "Upload video" });
-});
+router.put("/edit/:videoId", videoController.editVideo);
+
+router.post("/upload", videoController.uploadVideo);
 
 module.exports = router;

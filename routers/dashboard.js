@@ -1,35 +1,25 @@
-const express = require('express');
-const router = express.Router();
+// routers/dashboard.js
 
-// GET / (home)
-router.get('/', (req, res) => {
-  res.json({ message: 'Home page data' });
-});
+const express = require("express");
+const router = express.Router();
+const dashboardController = require("../controllers/dashboard.controller");
+
+// GET /
+router.get("/", dashboardController.getHome);
 
 // GET /watch/:watchingId
-router.get('/watch/:watchingId', (req, res) => {
-  const { watchingId } = req.params;
-  res.json({ message: `Watch video ${watchingId}` });
-});
+router.get("/watch/:watchingId", dashboardController.getWatch);
 
 // GET /history
-router.get('/history', (req, res) => {
-  res.json({ message: 'User history' });
-});
+router.get("/history", dashboardController.getHistory);
 
 // GET /shorts
-router.get('/shorts', (req, res) => {
-  res.json({ message: 'Shorts list' });
-});
+router.get("/shorts", dashboardController.getShorts);
 
 // GET /trending
-router.get('/trending', (req, res) => {
-  res.json({ message: 'Trending videos' });
-});
+router.get("/trending", dashboardController.getTrending);
 
 // GET /subscriptions
-router.get('/subscriptions', (req, res) => {
-  res.json({ message: 'User subscriptions' });
-});
+router.get("/subscriptions", dashboardController.getSubscriptions);
 
 module.exports = router;
