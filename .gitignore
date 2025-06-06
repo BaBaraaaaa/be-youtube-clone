@@ -28,7 +28,8 @@ coverage/
 
 # MongoDB dump files (nếu bạn backup)
 dump/
-
+#key api firebase
+firebaseConfig/key.json
 # Optional: nếu bạn có lock files khác
 package-lock.json
 yarn.lock
