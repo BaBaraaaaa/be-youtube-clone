@@ -6,6 +6,11 @@ const userSchema = new mongoose.Schema({
   passwordHash: { type: String, required: true },
   fullName: String,
   profilePictureUrl: String,
+  role: {
+    type: String,
+    enum: ['viewer','creator','admin'],
+    default: 'viewer'
+  },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });

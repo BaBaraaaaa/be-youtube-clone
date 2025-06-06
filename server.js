@@ -37,6 +37,9 @@ app.use("/user", userRoutes);
 app.use((req, res) => {
   res.status(404).json({ message: "Trang không tồn tại." });
 });
+app.use((req, res) => {
+  res.status(400).json({ message: "lỗi từ client." });
+});
 
 // Start server
 app.listen(port, () => {
